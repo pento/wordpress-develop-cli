@@ -20,4 +20,6 @@ RUN set-ex; \
 
 WORKDIR /var/www
 
-CMD /usr/local/bin/wp
+ENTRYPOINT [ "/usr/local/bin/wp" ]
+
+CMD [ "shell" ]
