@@ -20,4 +20,4 @@ RUN set-ex; \
 
 WORKDIR /var/www
 
-CMD ["wp", "shell"]
+CMD /usr/local/bin/wp
