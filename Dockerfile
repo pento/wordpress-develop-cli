@@ -20,6 +20,6 @@ RUN set-ex; \
 
 WORKDIR /var/www
 
-ENTRYPOINT [ "/usr/local/bin/wp" ]
+ENTRYPOINT [ "/usr/local/bin/wp", "--allow-root" ]
 
 CMD [ "shell" ]
