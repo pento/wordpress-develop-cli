@@ -1,4 +1,4 @@
-FROM garypendergast/wordpress-develop-php
+FROM garypendergast/wordpress-develop-php:5.4-fpm
 
 # install wp-cli dependences
 RUN set -ex; \
