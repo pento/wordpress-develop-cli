@@ -13,7 +13,7 @@ RUN set -ex; \
 	\
 	apt-get install -y --no-install-recommends \
 		less \
-		mysql-client \
+		virtual-mysql-client \
 	;
 
 RUN set-ex; \
