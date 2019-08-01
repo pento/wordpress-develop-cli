@@ -34,7 +34,7 @@ foreach ( $php_versions as $version => $download_url ) {
 		echo shell_exec( 'git checkout master' );
 	} else {
 		echo "Check for remote branch\n";
-		$branch_exists = shell_exec( "git ls-remote --heads git@github.com:pento/wordpress-develop-php.git $version-fpm" );
+		$branch_exists = shell_exec( "git ls-remote --heads git@github.com:pento/wordpress-develop-cli.git $version-fpm" );
 		if ( ! $branch_exists ) {
 			echo "Remote branch doesn't exist. Checkout master.\n";
 			echo shell_exec( 'git checkout master' );
