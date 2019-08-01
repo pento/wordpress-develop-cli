@@ -9,7 +9,7 @@ RUN set -ex; \
 	\
 	apt-get install -y --no-install-recommends \
 		less \
-		virtual-mysql-client \
+		%%MYSQL_CLIENT%% \
 	;
 
 RUN set-ex; \

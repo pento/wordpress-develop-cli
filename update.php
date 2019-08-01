@@ -3,15 +3,42 @@
 $latest = '7.3';
 
 $php_versions = array(
-	'5.2' => 'https://github.com/wp-cli/wp-cli/releases/download/v1.5.1/wp-cli-1.5.1.phar',
-	'5.3' => 'https://github.com/wp-cli/wp-cli/releases/download/v1.5.1/wp-cli-1.5.1.phar',
-	'5.4' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
-	'5.5' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
-	'5.6' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
-	'7.0' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
-	'7.1' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
-	'7.2' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
-	'7.3' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
+	'5.2' => array(
+		'mysql_client' => 'mysql-client',
+		'download_url' => 'https://github.com/wp-cli/wp-cli/releases/download/v1.5.1/wp-cli-1.5.1.phar',
+	),
+	'5.3' => array(
+		'mysql_client' => 'mysql-client',
+		'download_url' => 'https://github.com/wp-cli/wp-cli/releases/download/v1.5.1/wp-cli-1.5.1.phar',
+	),
+	'5.4' => array(
+		'mysql_client' => 'mysql-client',
+		'download_url' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
+	),
+	'5.5' => array(
+		'mysql_client' => 'mysql-client',
+		'download_url' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
+	),
+	'5.6' => array(
+		'mysql_client' => 'virtual-mysql-client',
+		'download_url' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
+	),
+	'7.0' => array(
+		'mysql_client' => 'virtual-mysql-client',
+		'download_url' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
+	),
+	'7.1' => array(
+		'mysql_client' => 'virtual-mysql-client',
+		'download_url' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
+	),
+	'7.2' => array(
+		'mysql_client' => 'virtual-mysql-client',
+		'download_url' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
+	),
+	'7.3' => array(
+		'mysql_client' => 'virtual-mysql-client',
+		'download_url' => 'https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar',
+	),
 );
 
 $php_versions['latest'] = $php_versions[ $latest ];
@@ -26,7 +53,7 @@ EOT;
 
 $template   = file_get_contents( 'Dockerfile.template' );
 
-foreach ( $php_versions as $version => $download_url ) {
+foreach ( $php_versions as $version => $config ) {
 	echo "-----\n$version\n-----\n";
 	if ( 'latest' === $version ) {
 		$branch_exists = true;
@@ -61,7 +88,8 @@ foreach ( $php_versions as $version => $download_url ) {
 
 	$dockerfile = str_replace( '%%GENERATED_WARNING%%', $generated_warning, $dockerfile );
 
-	$dockerfile = str_replace( '%%DOWNLOAD_URL%%', $download_url, $dockerfile );
+	$dockerfile = str_replace( '%%MYSQL_CLIENT%%', $config['mysql_client'], $dockerfile );
+	$dockerfile = str_replace( '%%DOWNLOAD_URL%%', $config['download_url'], $dockerfile );
 
 	$dockerfile = preg_replace( '/%%[^%]+%%/', '', $dockerfile );
 
