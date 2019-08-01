@@ -1,4 +1,4 @@
-FROM garypendergast/wordpress-develop-php:5.3-fpm
+FROM garypendergast/wordpress-develop-php:latest
 
 ##########################################################################
 #
@@ -18,7 +18,7 @@ RUN set -ex; \
 
 RUN set-ex; \
 	\
-	curl -o /usr/local/bin/wp https://github.com/wp-cli/wp-cli/releases/download/v1.5.1/wp-cli-1.5.1.phar; \
+	curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar; \
 	\
 	chmod +x /usr/local/bin/wp; \
 	\
