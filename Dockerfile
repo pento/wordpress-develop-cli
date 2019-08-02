@@ -16,9 +16,9 @@ RUN set -ex; \
 		mysql-client \
 	;
 
-RUN set-ex; \
+RUN set -ex; \
 	\
-	curl -o /usr/local/bin/wp https://github.com/wp-cli/wp-cli/releases/download/v1.5.1/wp-cli-1.5.1.phar; \
+	curl -oL /usr/local/bin/wp https://github.com/wp-cli/wp-cli/releases/download/v1.5.1/wp-cli-1.5.1.phar; \
 	\
 	chmod +x /usr/local/bin/wp; \
 	\
