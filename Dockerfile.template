@@ -14,7 +14,7 @@ RUN set -ex; \
 
 RUN set -ex; \
 	\
-	curl -oL /usr/local/bin/wp %%DOWNLOAD_URL%%; \
+	curl -L -o /usr/local/bin/wp %%DOWNLOAD_URL%%; \
 	\
 	chmod +x /usr/local/bin/wp; \
 	\
